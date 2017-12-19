@@ -1,0 +1,10 @@
+<div>
+	<h2 *ngIf='wishlist' >My Wishlist</h2>
+	<ul class="wishlist">
+		<li *ngFor="let wish of wishlist">
+		  <h2>{{ wish.name | uppercase }}</h2>
+		  	<button class="delete" title="delete from wishlist" 
+		  	(click)="deleteFromWishlist(wish)">x</button>
+		</li>
+	</ul>
+</div>

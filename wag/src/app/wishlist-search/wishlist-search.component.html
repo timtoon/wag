@@ -1,0 +1,14 @@
+<div id="search-component">
+  <h4>Search breeds</h4>
+
+  <input #searchBox id="search-box" 
+  (keyup)="search(searchBox.value)" 
+  (keydown.esc)="searchBox.value='';search('');"/>
+  
+  <ul class="search-result">
+	  <li *ngFor="let result of results$ | async" (click)="addToWishlist(result); searchBox.value='';search('');">
+		{{result.name}}
+	</li>
+  </ul>
+  <p *ngIf="(results$ | async)?.length < 1 && searchBox.value.length">"{{searchBox.value}}" not found. <a (click)="createWishlistItem(searchBox.value); searchBox.value='';search('');">Add it to your wishlist.</a></p>
+</div>
